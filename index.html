@@ -55,14 +55,10 @@
       <div class="game-board">
 
         <!-- game cards -->
-        <div class="game-card">
-          <div class="card-front"><ion-icon name="heart"></ion-icon></div>
-          <div class="card-back"><img src="/image/dog1.jpg" alt="dog-image1"></div>
-        </div>
       </div>
 
       <!-- new game button -->
-      <button class="game-btn">New Game</button>
+      <button class="game-btn" id="game-start">New Game</button>
 
 
       <!-- windows game modal -->
@@ -71,10 +67,10 @@
         <div class="game-result">
           <h2>You won</h2>
 
-          <p>Your Moves: <span>0</span></p>
-          <p>Your Time: <span>00:00</span></p>
+          <p>Your Moves: <span class="result-moves">0</span></p>
+          <p>Your Time: <span class="result-time">00:00</span></p>
 
-          <button class="game-btn">Play again</button>
+          <button class="game-btn" id="game-playAgain">Play again</button>
         </div>
 
       </div>
