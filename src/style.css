@@ -5,3 +5,80 @@
     @apply w-full bg-black text-white;
   }
 }
+
+@layer components {
+  .game-container {
+    @apply flex flex-col justify-center items-center gap-5 p-10 rounded-xl bg-orange-500 border border-white border-b-4;
+  }
+
+  .game-container h1 {
+    @apply font-bold text-xl md:text-3xl italic;
+  }
+
+  .game-stats {
+    @apply flex gap-5 justify-center items-center;
+  }
+
+  .game-moves,
+  .game-time,
+  .game-match {
+    @apply bg-white rounded-xl p-5 border border-white border-b-4 text-orange-600 flex flex-col justify-center items-center;
+  }
+
+  .game-moves h2,
+  .game-time h2,
+  .game-match h2 {
+    @apply font-semibold italic text-sm;
+  }
+
+  .game-moves p,
+  .game-time p,
+  .game-match p {
+    @apply font-bold text-xl;
+  }
+
+  .game-board {
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 mt-15;
+  }
+
+  .game-card {
+    @apply w-35 h-35 bg-white border border-b-4 border-teal-400 rounded-xl flex justify-center items-center relative overflow-hidden;
+  }
+
+  .card-front,
+  .card-back {
+    @apply w-full h-full absolute top-0 left-0 inset-0 text-orange-500 text-4xl;
+  }
+
+  .card-front {
+    @apply flex justify-center items-center hidden;
+  }
+
+  .card-back {
+    @apply w-full h-full overflow-hidden;
+  }
+
+  .card-back img {
+    @apply w-full h-full object-cover;
+  }
+
+  .game-btn {
+    @apply px-3 py-2 rounded-xl bg-white text-lg font-semibold border border-teal-500 border-b-4 cursor-pointer text-teal-500 mt-5;
+  }
+
+  .game-modal {
+    @apply fixed left-0 top-0 inset-0 flex justify-center items-center z-10;
+  }
+
+  .game-modal::before {
+    content: '';
+  }
+
+  .game-modal::before {
+    @apply w-full h-full inset-0 bg-black opacity-80 top-0 left-0 absolute z-[-1];
+  }
+
+  .game-result {
+    @apply bg-white rounded-xl p-10 border-teal-500 border border-b-4 text-black flex flex-col justify-center items-center;
+  }
+}
