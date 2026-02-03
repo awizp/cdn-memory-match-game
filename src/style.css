@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+@theme {
+  @keyframes bounce {
+
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.08);
+    }
+  }
+
+  /* custom animation */
+  --animate-modal: bounce 0.3s;
+  --animate-btn: bounce 0.5s;
+}
+
 @layer base {
   body {
     @apply w-full bg-black text-white;
@@ -8,7 +26,7 @@
 
 @layer components {
   .game-container {
-    @apply flex flex-col justify-center items-center gap-5 p-10 rounded-xl bg-orange-500 border border-white border-b-4;
+    @apply flex flex-col justify-center items-center gap-5 p-10 rounded-xl bg-orange-500 border border-white border-b-4 space-y-3;
   }
 
   .game-container h1 {
@@ -22,7 +40,7 @@
   .game-moves,
   .game-time,
   .game-match {
-    @apply bg-white rounded-xl p-5 border border-white border-b-4 text-orange-600 flex flex-col justify-center items-center;
+    @apply bg-white rounded-xl px-5 py-3 text-orange-600 flex flex-col gap-3 justify-center items-center border border-teal-500 border-b-4;
   }
 
   .game-moves h2,
@@ -42,28 +60,49 @@
   }
 
   .game-card {
-    @apply w-35 h-35 bg-white border border-b-4 border-teal-400 rounded-xl flex justify-center items-center relative overflow-hidden;
+    @apply w-35 h-35 border bg-transparent border-b-4 border-teal-400 rounded-xl flex justify-center items-center relative overflow-hidden transition duration-500 hover:scale-[1.08];
+  }
+
+  .game-card {
+    transform-style: preserve-3d;
   }
 
   .game-card.flipped {
-    translate: transformY(180deg);
+    translate: rotateY(180deg);
+  }
+
+  .game-card.flipped:hover {
+    transform: rotateY(180deg) scale(1.08);
+  }
+
+  .game-card.flipped .card-back {
+    transform: translateY(0);
   }
 
   .game-card.matched {
-    pointer-events: none;
+    @apply pointer-events-none;
   }
 
   .card-front,
   .card-back {
-    @apply w-full h-full absolute top-0 left-0 inset-0 text-orange-500 text-4xl;
+    @apply w-full h-full absolute top-0 left-0 inset-0 text-orange-500 text-4xl flex justify-center items-center;
+  }
+
+  .card-front,
+  .card-back {
+    backface-visibility: hidden;
   }
 
   .card-front {
-    @apply flex justify-center items-center hidden;
+    @apply bg-white;
   }
 
   .card-back {
-    @apply w-full h-full overflow-hidden;
+    @apply overflow-hidden;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
   }
 
   .card-back img {
@@ -71,11 +110,11 @@
   }
 
   .game-btn {
-    @apply px-3 py-2 rounded-xl bg-white text-lg font-semibold border border-teal-500 border-b-4 cursor-pointer text-teal-500 mt-5;
+    @apply px-3 py-2 rounded-xl bg-white text-lg font-semibold border-2 border-teal-500 shadow-sm shadow-orange-500 border-b-4 cursor-pointer text-teal-500 mt-5 hover:translate-y-[-3px] hover:shadow-orange-700 active:translate-y-0.5 active:shadow-orange-600 transition duration-300 animate-btn;
   }
 
   .game-modal {
-    @apply hidden fixed left-0 top-0 inset-0 justify-center items-center z-10;
+    @apply hidden fixed left-0 top-0 inset-0 justify-center items-center z-10 transition duration-500;
   }
 
   .game-modal::before {
@@ -83,10 +122,22 @@
   }
 
   .game-modal::before {
-    @apply w-full h-full inset-0 bg-black opacity-80 top-0 left-0 absolute z-[-1];
+    @apply w-full h-full inset-0 bg-black opacity-90 top-0 left-0 absolute z-[-1];
   }
 
   .game-result {
-    @apply bg-white rounded-xl p-10 border-teal-500 border border-b-4 text-black flex flex-col justify-center items-center;
+    @apply w-[90%] sm:w-[75%] md:w-[45%] bg-white rounded-xl p-10 shadow shadow-orange-400 border-orange-500 border-2 border-b-6 text-black flex flex-col justify-center items-center space-y-3 transition duration-500 animate-modal;
+  }
+
+  .game-result h2 {
+    @apply text-2xl font-semibold italic text-orange-500 mb-5;
+  }
+
+  .game-result p {
+    @apply font-semibold italic flex gap-3 items-center justify-center;
+  }
+
+  .game-result p span {
+    @apply text-lg font-semibold text-orange-600;
   }
 }

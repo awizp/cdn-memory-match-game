@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Font Awesome Icon -->
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,7 +21,7 @@
 <body>
 
   <main class="w-full">
-    <section class="container mx-auto w-full md:w-[60%] py-10">
+    <section class="container mx-auto w-full md:w-[60%] py-10 flex flex-col justify-center items-center gap-10">
 
       <!-- game title and stats container  -->
       <div class="game-container">
@@ -33,19 +32,19 @@
           <!-- game moves -->
           <div class="game-moves">
             <h2>Moves</h2>
-            <p>0</p>
+            <p id="game-moves">0</p>
           </div>
 
           <!-- game time -->
           <div class="game-time">
             <h2>Time</h2>
-            <p>00:00</p>
+            <p id="game-time">00:00</p>
           </div>
 
           <!-- game time -->
           <div class="game-match">
-            <h2>Time</h2>
-            <p>0/8</p>
+            <h2>Matches</h2>
+            <p id="game-match">0/8</p>
           </div>
         </div>
 
@@ -65,22 +64,19 @@
       <div class="game-modal">
 
         <div class="game-result">
-          <h2>You won</h2>
+          <h2><i class="fa-solid fa-trophy text-teal-500"></i> You won <i class="fa-solid fa-trophy text-teal-500"></i>
+          </h2>
 
           <p>Your Moves: <span class="result-moves">0</span></p>
           <p>Your Time: <span class="result-time">00:00</span></p>
 
-          <button class="game-btn" id="game-playAgain">Play again</button>
+          <button class="game-btn" id="game-playAgain"><i class="fa-solid fa-repeat"></i> Play again</button>
         </div>
 
       </div>
 
     </section>
   </main>
-
-  <!-- ionic icons scripts -->
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
   <!-- main javascript -->
   <script type="module" src="/src/main.js"></script>
