@@ -1,5 +1,4 @@
 ## ⚡ A Match Making Card Game | JS Challenge
-
     A memory match game to match the cards with best of your time and if you match the cards means there ends the game.
 
 ### 📒 Stacks used:
